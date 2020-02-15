@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane id="login" fx:id="loginStage" prefHeight="600.0"
+          prefWidth="800.0" stylesheets="@styles.css" vgap="10.0"
+          xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.ControllerLogin" alignment="CENTER">
+
+    <GridPane alignment="CENTER" vgap="10" hgap="100">
+
+        <Label text="TECH WALLET APP" textFill="indigo" GridPane.rowIndex="0" GridPane.columnSpan="2">
+            <font>
+                <Font size="40"/>
+            </font>
+        </Label>
+
+        <VBox alignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="0" spacing="10">
+            <TextField fx:id="userName" promptText="Username" prefWidth="200"/>
+            <PasswordField fx:id="password" promptText="password" prefWidth="200"/>
+            <Button prefWidth="200" onAction="#handleLogin" text="Log In"/>
+            <Label fx:id="actionWarningLogIn" textFill="RED"/>
+        </VBox>
+
+        <Separator orientation="VERTICAL" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <VBox alignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="2" spacing="10">
+            <TextField fx:id="newName" promptText="Name" prefWidth="200"/>
+            <TextField fx:id="lastName" promptText="Last name" prefWidth="200"/>
+            <TextField fx:id="newUserName" promptText="Username" prefWidth="200"/>
+            <PasswordField fx:id="newPassword" promptText="Password" prefWidth="200"/>
+            <PasswordField fx:id="passwordConfirmation" promptText="Confirm Password" prefWidth="200"/>
+            <PasswordField fx:id="pin" promptText="PIN" prefWidth="200"/>
+            <Button text="Register" onAction="#handleRegistration" prefWidth="200"/>
+            <Label fx:id="actionWarningRegister" textFill="RED"/>
+        </VBox>
+
+    </GridPane>
+
+
+
+</GridPane>
