@@ -1,30 +1,26 @@
-package sample;
+package wallet;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import wallet.data.Datasource;
 
-public class Main extends Application {
+import java.io.IOException;
+import java.net.ServerSocket;
 
-    @Override
-    public void start(Stage loginStage) throws Exception{
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            Scene logInScene = new Scene(root);
-            logInScene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-            loginStage.setScene(logInScene);
-            loginStage.setResizable(false);
-            loginStage.setTitle("Tech Wallet");
-            loginStage.show();
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
+public class Main {
 
     public static void main(String[] args) {
-        Application.launch(args);
+
+        //===connect with database===//
+        if(Datasource.getInstance().open()){
+            System.out.println("Server is up and running!");
+        }
+
+        try(ServerSocket serverSocket = new ServerSocket(6000)){
+            while(true){
+                new Messenger(serverSocket.accept()).start();
+                System.out.println("Client connected");
+            }
+        } catch (IOException e){
+            System.out.println("Unable to establish connection with client: " + e.getMessage());
+        }
     }
 }
