@@ -1,0 +1,1 @@
+This are the screenshots of all the JUnit tests
